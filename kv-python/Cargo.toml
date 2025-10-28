@@ -11,7 +11,7 @@ keywords = ["kv", "storage", "redis", "database", "python"]
 categories = ["database", "caching"]
 
 [lib]
-name = "reynard_kv"
+name = "kv_python"
 crate-type = ["cdylib"]
 
 [dependencies]
@@ -25,17 +25,23 @@ thiserror.workspace = true
 tracing.workspace = true
 
 # Local dependencies
-kv-core = "0.1.0"
-kv-client = "0.1.0"
+kv-core = { version = "0.1.1", path = "../kv-core" }
+kv-client = { version = "0.1.1", path = "../kv-client" }
 
 # Python bindings (maturin project)
-pyo3 = { version = "0.27.1", features = ["extension-module", "abi3-py38"] }
+pyo3 = { version = "0.20.3", features = ["extension-module", "abi3-py38"] }
 pyo3-asyncio = { version = "0.20.0", features = ["tokio-runtime"] }
 
 # Additional dependencies
 bytes = "1.10.1"
 tokio-util = { version = "0.7.16", features = ["codec"] }
 futures = "0.3.31"
+getrandom.workspace = true
+parking_lot.workspace = true
+parking_lot_core.workspace = true
+rand_core.workspace = true
+bitflags.workspace = true
+hashbrown.workspace = true
 
 # Linting configuration
 [lints.clippy]

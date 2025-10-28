@@ -24,13 +24,13 @@ pub enum ChannelPattern {
 impl ChannelPattern {
     /// Create a new exact channel pattern
     #[must_use]
-    pub fn exact(channel: String) -> Self {
+    pub const fn exact(channel: String) -> Self {
         Self::Exact(channel)
     }
 
     /// Create a new wildcard pattern
     #[must_use]
-    pub fn wildcard(pattern: String) -> Self {
+    pub const fn wildcard(pattern: String) -> Self {
         Self::Wildcard(pattern)
     }
 
@@ -61,8 +61,10 @@ impl ChannelPattern {
 /// Subscription information
 #[derive(Debug)]
 struct Subscription {
+    #[allow(dead_code)]
     pattern: ChannelPattern,
     sender: mpsc::UnboundedSender<PubSubMessage>,
+    #[allow(dead_code)]
     created_at: DateTime<Utc>,
     last_activity: DateTime<Utc>,
 }
@@ -151,8 +153,7 @@ impl PubSubManager {
             last_activity: Utc::now(),
         };
 
-        let mut subscriptions = self.subscriptions.write().await;
-        subscriptions.entry(pattern).or_insert_with(Vec::new).push(subscription);
+        self.subscriptions.write().await.entry(pattern).or_insert_with(Vec::new).push(subscription);
         
         debug!("New subscription created for pattern: {:?}", pattern_clone);
         Ok(receiver)
@@ -235,14 +236,12 @@ impl PubSubManager {
     /// # Errors
     /// Returns error if stats calculation fails
     pub async fn get_stats(&self) -> KVResult<PubSubStats> {
-        let subscriptions = self.subscriptions.read().await;
-        
         let mut total_subscriptions = 0;
         let mut pattern_count = 0;
         let mut exact_patterns = 0;
         let mut wildcard_patterns = 0;
 
-        for (pattern, subs_list) in subscriptions.iter() {
+        for (pattern, subs_list) in self.subscriptions.read().await.iter() {
             pattern_count += 1;
             total_subscriptions += subs_list.len();
             

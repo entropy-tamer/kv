@@ -21,7 +21,7 @@
       ],
       "resolver": "2",
       "package": {
-        "version": "0.1.0",
+        "version": "0.1.1",
         "edition": "2024",
         "authors": [
           "Reynard Team"
@@ -107,7 +107,8 @@
         "parking_lot": "0.12.5",
         "parking_lot_core": "0.9.12",
         "rand_core": "0.9.3",
-        "bitflags": "2.10.0"
+        "bitflags": "2.10.0",
+        "hashbrown": "0.15.5"
       }
     },
     "package": {

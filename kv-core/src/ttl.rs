@@ -72,6 +72,7 @@ impl TTLManager {
                         }
                     }
                     
+                    drop(key_exps);
                     expired
                 };
                 

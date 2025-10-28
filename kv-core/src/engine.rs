@@ -495,8 +495,8 @@ impl KVEngine {
     /// # Errors
     /// Returns error if publishing fails
     async fn publish_invalidation(&self, key: &Key) -> KVResult<usize> {
-        let channel = format!("cache:invalidate:{}", key);
-        let message = Value::String(format!("invalidate:{}", key));
+        let channel = format!("cache:invalidate:{key}");
+        let message = Value::String(format!("invalidate:{key}"));
         self.publish(&channel, message).await
     }
 }

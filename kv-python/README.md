@@ -270,6 +270,7 @@ print(f"Master key: {master_key}")
 ### Encryption
 
 All data is automatically encrypted using:
+
 - **AES-256-GCM**: Authenticated encryption
 - **HKDF**: Key derivation for database-specific keys
 - **Secure Random**: Cryptographically secure random generation

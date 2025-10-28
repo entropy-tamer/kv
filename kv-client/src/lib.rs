@@ -27,7 +27,7 @@ impl Client {
     /// 
     /// # Errors
     /// Returns error if connection fails
-    pub async fn connect(config: Config) -> Result<Self> {
+    pub const fn connect(config: Config) -> Result<Self> {
         // TODO: Implement connection logic
         Ok(Self { _config: config })
     }
@@ -36,7 +36,7 @@ impl Client {
     /// 
     /// # Errors
     /// Returns error if the operation fails
-    pub async fn set(&self, _key: &str, _value: &str) -> Result<()> {
+    pub const fn set(&self, _key: &str, _value: &str) -> Result<()> {
         // TODO: Implement set operation
         Ok(())
     }
@@ -45,7 +45,7 @@ impl Client {
     /// 
     /// # Errors
     /// Returns error if the operation fails
-    pub async fn get(&self, _key: &str) -> Result<Option<String>> {
+    pub const fn get(&self, _key: &str) -> Result<Option<String>> {
         // TODO: Implement get operation
         Ok(None)
     }
