@@ -25,8 +25,8 @@ thiserror.workspace = true
 tracing.workspace = true
 
 # Local dependencies
-kv-core = { path = "../kv-core" }
-kv-client = { path = "../kv-client" }
+kv-core = "0.1.0"
+kv-client = "0.1.0"
 
 # Python bindings (maturin project)
 pyo3 = { version = "0.27.1", features = ["extension-module", "abi3-py38"] }

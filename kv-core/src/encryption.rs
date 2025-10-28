@@ -42,7 +42,7 @@ impl DatabaseKey {
 
         // Generate random nonce for this database
         let mut nonce = [0u8; 12];
-        getrandom::getrandom(&mut nonce).map_err(|e| KVError::Encryption(format!("Failed to generate random nonce: {e}")))?;
+        getrandom::fill(&mut nonce).map_err(|e| KVError::Encryption(format!("Failed to generate random nonce: {e}")))?;
 
         let key = Key::<Aes256Gcm>::from_slice(&derived_key);
         
@@ -93,7 +93,7 @@ impl KeyManager {
         let master_key = if master_key.is_empty() {
             // Generate a new master key
             let mut key = [0u8; 32];
-            getrandom::getrandom(&mut key).map_err(|e| KVError::Encryption(format!("Failed to generate random key: {e}")))?;
+            getrandom::fill(&mut key).map_err(|e| KVError::Encryption(format!("Failed to generate random key: {e}")))?;
             key.to_vec()
         } else {
             // Decode base64 master key
@@ -134,7 +134,7 @@ impl KeyManager {
     pub fn rotate_master_key(&mut self) -> KVResult<String> {
         // Generate new master key
         let mut new_master_key = [0u8; 32];
-        getrandom::getrandom(&mut new_master_key).map_err(|e| KVError::Encryption(format!("Failed to generate random key: {e}")))?;
+        getrandom::fill(&mut new_master_key).map_err(|e| KVError::Encryption(format!("Failed to generate random key: {e}")))?;
         
         // Update master key
         self.master_key = new_master_key.to_vec();
