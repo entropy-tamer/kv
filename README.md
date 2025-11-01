@@ -20,6 +20,10 @@ A high-performance, encrypted key-value store designed to replace Redis with enh
 - **[kv-client](./kv-client/)** - Client library for connecting to KV servers
 - **[kv-python](./kv-python/)** - Python bindings for easy integration
 
+### Server
+
+- **[kv-server](./kv-server/)** - HTTP server for network access to KV service
+
 ## 🛠️ Installation
 
 ### Rust Crates

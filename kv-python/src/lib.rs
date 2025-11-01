@@ -305,7 +305,7 @@ impl PyKVEngine {
 
 /// Python module for KV
 #[pymodule]
-fn kv_python(_py: Python<'_>, m: &PyModule) -> PyResult<()> {
+fn kv_python(m: &Bound<'_, PyModule>) -> PyResult<()> {
     m.add_class::<PyKVEngine>()?;
     
     // Add version info
