@@ -48,15 +48,15 @@ async def main():
         persistence_mode="hybrid",
         data_dir="./data"
     )
-    
+
     # Basic operations
     await engine.set(0, "user:123", "john_doe")
     value = await engine.get(0, "user:123")
     print(f"User: {value}")
-    
+
     # Pub/Sub operations
     await engine.publish("notifications", "Hello World!")
-    
+
     # Cleanup
     await engine.close()
 
@@ -280,10 +280,10 @@ All data is automatically encrypted using:
 ### Benchmarks
 
 | Operation | Memory Mode | Hybrid Mode | Disk Mode |
-|-----------|-------------|-------------|-----------|
-| Set | ~200ns | ~400ns | ~800ns |
-| Get | ~100ns | ~200ns | ~500ns |
-| Delete | ~150ns | ~300ns | ~600ns |
+| --------- | ----------- | ----------- | --------- |
+| Set       | ~200ns      | ~400ns      | ~800ns    |
+| Get       | ~100ns      | ~200ns      | ~500ns    |
+| Delete    | ~150ns      | ~300ns      | ~600ns    |
 
 ### Memory Usage
 

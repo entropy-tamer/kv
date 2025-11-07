@@ -38,18 +38,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         retry_attempts: 3,
         tls_config: None, // Optional TLS configuration
     };
-    
+
     // Connect to server
     let mut client = KVClient::connect(config).await?;
-    
+
     // Basic operations
     client.set(0, "user:123", "john_doe", None).await?;
     let value = client.get(0, "user:123").await?;
     println!("User: {:?}", value);
-    
+
     // Pub/Sub operations
     client.publish("notifications", "Hello World!").await?;
-    
+
     // Cleanup
     client.disconnect().await?;
     Ok(())
@@ -65,13 +65,13 @@ use kv_client::{KVClient, ClientConfig, ConnectionPool};
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let config = ClientConfig::default();
     let pool = ConnectionPool::new(config, 5).await?; // 5 connections
-    
+
     // Get client from pool
     let mut client = pool.get_client().await?;
-    
+
     // Use client
     client.set(0, "key", "value", None).await?;
-    
+
     // Client is automatically returned to pool when dropped
     Ok(())
 }

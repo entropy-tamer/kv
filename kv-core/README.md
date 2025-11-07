@@ -35,18 +35,18 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         max_memory_size: 100 * 1024 * 1024, // 100MB
         compression: true,
     };
-    
+
     // Initialize the engine
     let mut engine = KVEngine::new(config).await?;
-    
+
     // Basic operations
     engine.set(0, "user:123", "john_doe", None).await?;
     let value = engine.get(0, "user:123").await?;
     println!("User: {:?}", value);
-    
+
     // Pub/Sub operations
     engine.publish("notifications", "Hello World!").await?;
-    
+
     // Cleanup
     engine.shutdown().await?;
     Ok(())
@@ -97,10 +97,10 @@ let new_key = encryption_manager.rotate_master_key()?;
 ### Benchmarks
 
 | Operation | Memory Mode | Hybrid Mode | Disk Mode |
-|-----------|-------------|-------------|-----------|
-| Set | ~100ns | ~200ns | ~500ns |
-| Get | ~50ns | ~100ns | ~300ns |
-| Delete | ~80ns | ~150ns | ~400ns |
+| --------- | ----------- | ----------- | --------- |
+| Set       | ~100ns      | ~200ns      | ~500ns    |
+| Get       | ~50ns       | ~100ns      | ~300ns    |
+| Delete    | ~80ns       | ~150ns      | ~400ns    |
 
 ### Memory Usage
 

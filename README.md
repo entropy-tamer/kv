@@ -53,17 +53,17 @@ use kv_core::{KVEngine, Config};
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let config = Config::default();
     let mut engine = KVEngine::new(config).await?;
-    
+
     // Set a value
     engine.set(0, "user:123", "john_doe", None).await?;
-    
+
     // Get a value
     let value = engine.get(0, "user:123").await?;
     println!("User: {:?}", value);
-    
+
     // Publish a message
     engine.publish("notifications", "Hello World!").await?;
-    
+
     Ok(())
 }
 ```
@@ -80,14 +80,14 @@ async def main():
         persistence_mode="hybrid",
         data_dir="./data"
     )
-    
+
     # Set a value
     await engine.set(0, "user:123", "john_doe")
-    
+
     # Get a value
     value = await engine.get(0, "user:123")
     print(f"User: {value}")
-    
+
     # Publish a message
     await engine.publish("notifications", "Hello World!")
 
@@ -114,13 +114,13 @@ RUST_LOG="kv=info"
 
 ### Configuration Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `master_key` | String | Generated | Base64-encoded encryption key |
-| `persistence_mode` | String | `hybrid` | Storage mode: `memory`, `disk`, `hybrid` |
-| `data_dir` | String | `./data/kv` | Directory for persistent storage |
-| `max_memory_size` | usize | `100MB` | Maximum memory cache size |
-| `compression` | bool | `true` | Enable data compression |
+| Option             | Type   | Default     | Description                              |
+| ------------------ | ------ | ----------- | ---------------------------------------- |
+| `master_key`       | String | Generated   | Base64-encoded encryption key            |
+| `persistence_mode` | String | `hybrid`    | Storage mode: `memory`, `disk`, `hybrid` |
+| `data_dir`         | String | `./data/kv` | Directory for persistent storage         |
+| `max_memory_size`  | usize  | `100MB`     | Maximum memory cache size                |
+| `compression`      | bool   | `true`      | Enable data compression                  |
 
 ## 🔐 Security
 

@@ -96,17 +96,17 @@ format = "json"
 
 ### Configuration Options
 
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `server.port` | u16 | `8080` | Server port |
-| `server.host` | String | `"0.0.0.0"` | Server host |
-| `storage.master_key` | String | Generated | Base64-encoded encryption key |
-| `storage.data_dir` | String | `"./data/kv"` | Directory for persistent storage |
-| `storage.persistence_mode` | String | `"hybrid"` | Storage mode: `memory`, `disk`, `hybrid` |
-| `storage.max_memory_size` | String | `"100MB"` | Maximum memory cache size |
-| `storage.compression` | bool | `true` | Enable data compression |
-| `logging.level` | String | `"info"` | Log level |
-| `logging.format` | String | `"pretty"` | Log format: `pretty`, `json` |
+| Option                     | Type   | Default       | Description                              |
+| -------------------------- | ------ | ------------- | ---------------------------------------- |
+| `server.port`              | u16    | `8080`        | Server port                              |
+| `server.host`              | String | `"0.0.0.0"`   | Server host                              |
+| `storage.master_key`       | String | Generated     | Base64-encoded encryption key            |
+| `storage.data_dir`         | String | `"./data/kv"` | Directory for persistent storage         |
+| `storage.persistence_mode` | String | `"hybrid"`    | Storage mode: `memory`, `disk`, `hybrid` |
+| `storage.max_memory_size`  | String | `"100MB"`     | Maximum memory cache size                |
+| `storage.compression`      | bool   | `true`        | Enable data compression                  |
+| `logging.level`            | String | `"info"`      | Log level                                |
+| `logging.format`           | String | `"pretty"`    | Log format: `pretty`, `json`             |
 
 ## 📚 API Reference
 
