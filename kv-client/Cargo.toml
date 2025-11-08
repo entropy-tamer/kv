@@ -36,6 +36,10 @@ rand_core.workspace = true
 bitflags.workspace = true
 hashbrown.workspace = true
 
+# HTTP client
+reqwest.workspace = true
+urlencoding.workspace = true
+
 # Linting configuration
 [lints.clippy]
 pedantic = "warn"
